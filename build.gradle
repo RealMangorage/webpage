@@ -1,19 +1,33 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '+'
+    //id 'com.github.johnrengelman.shadow' version '+'
 }
 
 group = 'org.mangorage'
 version = '1.0-SNAPSHOT'
+
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-logging' // Include Spring Boot logging starter
+    implementation 'ch.qos.logback:logback-classic' // Include Logback classic module
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
     useJUnitPlatform()
+}
+
+// Shadow plugin configuration
+jar {
+    // Set the main class for the fat JAR
+    manifest {
+        attributes 'Main-Class': 'org.mangorage.web.Main' // Replace 'com.example.demo.DemoApplication' with your main class
+    }
 }
