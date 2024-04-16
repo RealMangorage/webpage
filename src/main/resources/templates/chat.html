@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chat Application</title>
+</head>
+<body>
+<h2>Chat Log:</h2>
+<textarea id="chatLog" name="chatLog" rows="10" cols="50" readonly th:text="${chatLog}"></textarea><br><br>
+<h2>Enter Message:</h2>
+<form action="/submit" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="message">Message:</label>
+    <input type="text" id="message" name="message"><br><br>
+    <input type="submit" value="Send">
+</form>
+</body>
+</html>
