@@ -47,10 +47,15 @@ public class Accounts {
         return user;
     }
 
+    public static List<AccountData> getData() {
+        return DATA;
+    }
+
     public static AccountData createAccount(String authToken, StompHeaderAccessor accessor) {
         AccountData data = new AccountData();
         data.setAuthToken(authToken);
         data.setUsername(generateRandomUser());
+        data.setAccessor(accessor);
         DATA.add(data);
         return data;
     }
